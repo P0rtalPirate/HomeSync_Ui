@@ -8,10 +8,18 @@ function createMainWindow() {
     title: "HomeSync",
     width: 1000,
     height: 800,
+    // frame: false, this tow are use to remove extra frame and options make it full screen
+    // fullscreen: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
 
+  mainWindow.webContents.openDevTools();
+
   const startUrl = url.format({
-    pathname: path.join(__dirname, "index.html"),
+    pathname: path.join(__dirname, "./screen/build/index.html"),
     protocol: "file",
   });
 
